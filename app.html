@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base Math - app</title>
+<style>
+  :root { --accent:#3b4fb0; --ink:#10142e; --paper:#f4f5fc; --soft:#e1e5f7; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:Georgia, "Times New Roman", serif; background:var(--paper); color:var(--ink); line-height:1.55; }
+  main { max-width:660px; margin:0 auto; }
+  .boundary { background:#fdeaea; border-left:6px solid #b03030; color:#5c1c1c; border-radius:6px; padding:1rem 1.1rem; }
+  .boundary strong { display:block; margin-bottom:.3rem; }
+  body { padding:2rem 1.2rem; }
+  h1 { font-size:1.8rem; color:var(--accent); }
+  .boundary { margin:1rem 0 1.4rem; }
+  .panel { background:var(--soft); border-left:5px solid var(--accent); border-radius:6px; padding:1rem 1.1rem; margin-bottom:1.1rem; }
+  h2 { font-size:1.1rem; margin-bottom:.6rem; }
+  p.note { font-size:.9rem; margin-bottom:.4rem; }
+  label { display:block; font-size:.9rem; margin:.45rem 0 .1rem; }
+  input, select { width:100%; padding:.45rem .55rem; font-size:1rem; border:1px solid #b9c1e6; border-radius:6px; background:#fff; color:var(--ink); }
+  .row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:.6rem; }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+  .out { margin-top:.7rem; font-size:.98rem; background:#fff; border:1px dashed #b9c1e6; border-radius:6px; padding:.6rem .7rem; min-height:2.4rem; }
+  .out.err { border-color:#b03030; color:#8a1f1f; }
+  footer { margin-top:1.8rem; font-size:.85rem; color:#5560a0; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Base Math</h1>
+  <div class="boundary">
+    <strong>Boundary: arithmetic only</strong>
+    This page works out whole numbers written in other bases, two's complement patterns and digit capacities from the numbers you type. It does not know which base, width or signed format a language, file or device uses. Check those where they apply.
+  </div>
+
+  <div class="panel">
+    <h2>The convert truth</h2>
+    <p class="note">A whole number written in another base. Digits are 0-9 then a-z, up to 64 digits.</p>
+    <div class="row">
+      <div><label for="c-t">Number</label><input id="c-t" type="text" step="1" value="ff"></div>
+      <div><label for="c-f">From base</label><input id="c-f" type="number" step="1" value="16"></div>
+      <div><label for="c-b">To base</label><input id="c-b" type="number" step="1" value="10"></div>
+    </div>
+    <div class="out" id="c-out"></div>
+  </div>
+
+  <div class="panel">
+    <h2>The twos truth</h2>
+    <p class="note">How a whole number is stored in a fixed number of bits, two's complement.</p>
+    <div class="row2">
+      <div><label for="t-v">Value</label><input id="t-v" type="number" step="1" value="-5"></div>
+      <div><label for="t-b">Bits</label><select id="t-b"><option value="4">4</option><option value="8" selected>8</option><option value="16">16</option><option value="32">32</option></select></div>
+    </div>
+    <div class="out" id="t-out"></div>
+  </div>
+
+  <div class="panel">
+    <h2>The capacity truth</h2>
+    <p class="note">The range a number of digits can hold in a base.</p>
+    <div class="row2">
+      <div><label for="p-d">Digits</label><input id="p-d" type="number" step="1" value="8"></div>
+      <div><label for="p-b">Base</label><input id="p-b" type="number" step="1" value="2"></div>
+    </div>
+    <div class="out" id="p-out"></div>
+  </div>
+
+  <footer>Base Math is exact arithmetic over the numbers you enter. <a href="index.html">Why it exists</a>.</footer>
+</main>
+<script src="engine.js"></script>
+<script>
+  const num = (id) => Number(document.getElementById(id).value);
+  const list = (id) => document.getElementById(id).value.split(/[\s,]+/).filter((t) => t !== "").map(Number);
+  function show(id, fn) {
+    const out = document.getElementById(id);
+    try { out.textContent = fn(); out.classList.remove("err"); }
+    catch (e) { out.textContent = e.message; out.classList.add("err"); }
+  }
+  function recalc() {
+    show("c-out", () => convertTruth(document.getElementById("c-t").value, num("c-f"), num("c-b")));
+    show("t-out", () => twosTruth(num("t-v"), num("t-b")));
+    show("p-out", () => capacityTruth(num("p-d"), num("p-b")));
+  }
+  document.querySelectorAll("input, select").forEach((el) => {
+    el.addEventListener("input", recalc);
+    el.addEventListener("change", recalc);
+  });
+  recalc();
+</script>
+</body>
+</html>
