@@ -1,0 +1,431 @@
+[
+ {
+  "fn": "convertTruth",
+  "args": [
+   "ff",
+   16,
+   10
+  ],
+  "expected": "ff in base 16 is 255 in base 10."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "255",
+   10,
+   2
+  ],
+  "expected": "255 in base 10 is 11111111 in base 2."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "11111111",
+   2,
+   16
+  ],
+  "expected": "11111111 in base 2 is ff in base 16."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "0",
+   10,
+   2
+  ],
+  "expected": "0 in base 10 is 0 in base 2."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "zz",
+   36,
+   10
+  ],
+  "expected": "zz in base 36 is 1295 in base 10."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "FF",
+   16,
+   8
+  ],
+  "expected": "ff in base 16 is 377 in base 8."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "007",
+   10,
+   10
+  ],
+  "expected": "007 in base 10 is 7 in base 10."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   " 1 0 1 ",
+   2,
+   10
+  ],
+  "expected": "101 in base 2 is 5 in base 10."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "1111111111111111111111111111111111111111111111111111111111111111",
+   2,
+   16
+  ],
+  "expected": "1111111111111111111111111111111111111111111111111111111111111111 in base 2 is ffffffffffffffff in base 16."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+   36,
+   10
+  ],
+  "expected": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz in base 36 is 4011991914547630480065053387702443812690402487741812225955731622655455723258857248542161222254985215 in base 10."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "100",
+   36,
+   2
+  ],
+  "expected": "100 in base 36 is 10100010000 in base 2."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "777",
+   8,
+   16
+  ],
+  "expected": "777 in base 8 is 1ff in base 16."
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "12",
+   2,
+   10
+  ],
+  "expected": "ERR:'2' is not a digit in base 2"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "g",
+   16,
+   10
+  ],
+  "expected": "ERR:'g' is not a digit in base 16"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "-5",
+   10,
+   2
+  ],
+  "expected": "ERR:'-' is not a digit in base 10"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "",
+   10,
+   2
+  ],
+  "expected": "ERR:enter a number to convert"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "11111111111111111111111111111111111111111111111111111111111111111",
+   2,
+   10
+  ],
+  "expected": "ERR:the number can have at most 64 digits"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "10",
+   1,
+   10
+  ],
+  "expected": "ERR:from base must be a whole number from 2 to 36"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "10",
+   10,
+   37
+  ],
+  "expected": "ERR:to base must be a whole number from 2 to 36"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   "10",
+   10.5,
+   2
+  ],
+  "expected": "ERR:from base must be a whole number from 2 to 36"
+ },
+ {
+  "fn": "convertTruth",
+  "args": [
+   null,
+   10,
+   2
+  ],
+  "expected": "ERR:enter a number to convert"
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   -5,
+   8
+  ],
+  "expected": "-5 fits in 8 bits as 11111011 (hex fb). Read as an unsigned number, that pattern is 251."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   5,
+   8
+  ],
+  "expected": "5 fits in 8 bits as 00000101 (hex 05). Read as an unsigned number, that pattern is 5."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   0,
+   8
+  ],
+  "expected": "0 fits in 8 bits as 00000000 (hex 00). Read as an unsigned number, that pattern is 0."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   127,
+   8
+  ],
+  "expected": "127 fits in 8 bits as 01111111 (hex 7f). Read as an unsigned number, that pattern is 127."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   128,
+   8
+  ],
+  "expected": "128 does not fit in 8 bits, which hold -128 to 127."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   -128,
+   8
+  ],
+  "expected": "-128 fits in 8 bits as 10000000 (hex 80). Read as an unsigned number, that pattern is 128."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   -129,
+   8
+  ],
+  "expected": "-129 does not fit in 8 bits, which hold -128 to 127."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   -1,
+   32
+  ],
+  "expected": "-1 fits in 32 bits as 11111111111111111111111111111111 (hex ffffffff). Read as an unsigned number, that pattern is 4294967295."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   2147483647,
+   32
+  ],
+  "expected": "2147483647 fits in 32 bits as 01111111111111111111111111111111 (hex 7fffffff). Read as an unsigned number, that pattern is 2147483647."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   2147483648,
+   32
+  ],
+  "expected": "2147483648 does not fit in 32 bits, which hold -2147483648 to 2147483647."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   -2147483648,
+   32
+  ],
+  "expected": "-2147483648 fits in 32 bits as 10000000000000000000000000000000 (hex 80000000). Read as an unsigned number, that pattern is 2147483648."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   -1,
+   4
+  ],
+  "expected": "-1 fits in 4 bits as 1111 (hex f). Read as an unsigned number, that pattern is 15."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   7,
+   4
+  ],
+  "expected": "7 fits in 4 bits as 0111 (hex 7). Read as an unsigned number, that pattern is 7."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   8,
+   4
+  ],
+  "expected": "8 does not fit in 4 bits, which hold -8 to 7."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   -300,
+   16
+  ],
+  "expected": "-300 fits in 16 bits as 1111111011010100 (hex fed4). Read as an unsigned number, that pattern is 65236."
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   1.5,
+   8
+  ],
+  "expected": "ERR:value must be a whole number"
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   5,
+   7
+  ],
+  "expected": "ERR:bit width must be 4, 8, 16 or 32"
+ },
+ {
+  "fn": "twosTruth",
+  "args": [
+   10000000000000,
+   32
+  ],
+  "expected": "ERR:value must be a whole number"
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   8,
+   2
+  ],
+  "expected": "8 digits in base 2 hold 0 to 255, which is 256 values."
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   1,
+   10
+  ],
+  "expected": "1 digit in base 10 holds 0 to 9, which is 10 values."
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   2,
+   16
+  ],
+  "expected": "2 digits in base 16 hold 0 to 255, which is 256 values."
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   64,
+   2
+  ],
+  "expected": "64 digits in base 2 hold 0 to 18446744073709551615, which is 18446744073709551616 values."
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   64,
+   36
+  ],
+  "expected": "64 digits in base 36 hold 0 to 4011991914547630480065053387702443812690402487741812225955731622655455723258857248542161222254985215, which is 4011991914547630480065053387702443812690402487741812225955731622655455723258857248542161222254985216 values."
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   4,
+   10
+  ],
+  "expected": "4 digits in base 10 hold 0 to 9999, which is 10000 values."
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   1,
+   2
+  ],
+  "expected": "1 digit in base 2 holds 0 to 1, which is 2 values."
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   0,
+   2
+  ],
+  "expected": "ERR:digits must be a whole number from 1 to 64"
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   65,
+   2
+  ],
+  "expected": "ERR:digits must be a whole number from 1 to 64"
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   8,
+   1
+  ],
+  "expected": "ERR:base must be a whole number from 2 to 36"
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   8,
+   37
+  ],
+  "expected": "ERR:base must be a whole number from 2 to 36"
+ },
+ {
+  "fn": "capacityTruth",
+  "args": [
+   2.5,
+   10
+  ],
+  "expected": "ERR:digits must be a whole number from 1 to 64"
+ }
+]
